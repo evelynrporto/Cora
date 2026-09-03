@@ -1,77 +1,70 @@
 # Cora
 
-Dashboard pessoal de finanças: cartões, lançamentos, gastos por mês e resumo por categoria.
+Dashboard pessoal de finanças, feito pra acompanhar cartões, gastos do mês e pra onde o dinheiro está indo — sem depender de planilha.
 
-- **Frontend**: React + TypeScript + Vite
-- **Backend**: Node.js (Express) + SQLite (via `node:sqlite`, nativo do Node — sem dependências de compilação)
+<p align="center">
+  <img src="docs/dashboard-pink.png" width="49%" alt="Dashboard da Cora, tema rosa" />
+  <img src="docs/dashboard-teal.png" width="49%" alt="Dashboard da Cora, tema verde-água" />
+</p>
 
-## Pré-requisitos
+A paleta de cores do app é trocável na hora, direto pelo ícone no canto superior direito.
 
-- [Node.js](https://nodejs.org/) **22.5.0 ou superior** (o backend usa o módulo nativo `node:sqlite`, disponível a partir dessa versão)
+## O que tem
 
-## Como rodar
+- Cartões salvos em formato de carteira, com cor e limite editáveis
+- Lançamentos do mês com ícone por marca (Netflix, iFood, Nubank...) ou categoria
+- Gráfico de gastos por mês e resumo por categoria, sempre calculados a partir dos lançamentos — não tem número solto pra desincronizar
+- Tudo salvo em SQLite local, sem serviço externo
 
-1. Clone o repositório e entre na pasta:
+## Stack
 
-   ```bash
-   git clone https://github.com/evelynrporto/Cora.git
-   cd Cora
-   ```
+React + TypeScript + Vite no front, Express + SQLite (`node:sqlite`, nativo) no back.
 
-2. Instale as dependências do frontend (raiz) e do backend (`server/`):
+## Rodando localmente
 
-   ```bash
-   npm install
-   npm install --prefix server
-   ```
-
-3. Suba frontend e backend juntos:
-
-   ```bash
-   npm run dev:all
-   ```
-
-   Isso inicia:
-   - o frontend em [http://localhost:5173](http://localhost:5173)
-   - a API em `http://localhost:3001`
-
-4. Abra [http://localhost:5173](http://localhost:5173) no navegador.
-
-Na primeira execução o backend cria automaticamente o banco SQLite em `server/data/financeapp.db`, já vazio (sem dados de exemplo) — é só começar a cadastrar cartões e lançamentos pela interface.
-
-### Rodando frontend e backend separadamente
-
-Se preferir dois terminais em vez do `dev:all`:
+Requisito: [Node.js](https://nodejs.org/) 22.5 ou mais recente (é a partir dessa versão que o `node:sqlite` existe).
 
 ```bash
-npm run dev            # frontend (Vite)
-npm run dev:server     # backend (Express + SQLite)
+git clone https://github.com/evelynrporto/Cora.git
+cd Cora
+npm install
+npm install --prefix server
+npm run dev:all
 ```
 
-## Build de produção (frontend)
+Isso sobe o frontend em `localhost:5173` e a API em `localhost:3001`. Na primeira vez o backend cria o banco sozinho em `server/data/financeapp.db`, vazio — é só começar a usar.
+
+Se preferir rodar cada lado em um terminal separado:
+
+```bash
+npm run dev            # frontend
+npm run dev:server     # backend
+```
+
+Build de produção do frontend:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-O backend em produção roda com `npm start --prefix server` (usa o mesmo `server/data/financeapp.db`).
+(o backend em produção sobe com `npm start --prefix server`)
 
-## Estrutura do projeto
+## Estrutura
 
 ```
-src/            frontend (componentes, widgets, libs)
-server/         backend Express + SQLite
-server/data/    banco SQLite local (gerado automaticamente, ignorado pelo git)
+src/            componentes, widgets e libs do frontend
+server/         API Express + SQLite
+server/data/    banco local, gerado automaticamente e fora do git
 ```
 
-## Scripts disponíveis
+## Scripts
 
-| Comando | Descrição |
+| Comando | O que faz |
 | --- | --- |
-| `npm run dev` | Inicia só o frontend |
-| `npm run dev:server` | Inicia só o backend |
-| `npm run dev:all` | Inicia frontend + backend juntos |
-| `npm run build` | Type-check + build de produção do frontend |
-| `npm run lint` | Roda o linter (Oxlint) |
-| `npm run preview` | Serve o build de produção localmente |
+| `npm run dev` | só o frontend |
+| `npm run dev:server` | só o backend |
+| `npm run dev:all` | os dois juntos |
+| `npm run build` | type-check + build de produção |
+| `npm run lint` | roda o Oxlint |
+| `npm run preview` | serve o build localmente |
