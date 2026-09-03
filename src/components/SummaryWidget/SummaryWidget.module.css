@@ -1,0 +1,148 @@
+.widget {
+  composes: widgetCard from global;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  background: #ffffff;
+}
+
+.totalColumn {
+  width: 38%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding-right: 16px;
+}
+
+.label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: #9b95a5;
+}
+
+.total {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.6px;
+}
+
+.change {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: 10px;
+}
+
+.changeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.changeBadgePositive {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.changeBadgeNegative {
+  background: #eafaf5;
+  color: #2fbe95;
+}
+
+.changeIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.changeIconDown {
+  transform: scaleY(-1);
+}
+
+.changeText {
+  font-size: 12px;
+  color: #9b95a5;
+}
+
+.divider {
+  align-self: stretch;
+  width: 1px;
+  background: rgba(31, 26, 43, 0.08);
+  margin: 0 20px;
+}
+
+.categoriesColumn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.categoriesTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1f1a2b;
+  letter-spacing: -0.1px;
+}
+
+.empty {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: #9b95a5;
+}
+
+.categoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.categoryRow {
+  display: grid;
+  grid-template-columns: 74px 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.categoryLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: #5b5566;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track {
+  height: 16px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.categoryValue {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1f1a2b;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
+}

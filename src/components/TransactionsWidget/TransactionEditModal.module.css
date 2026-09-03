@@ -1,0 +1,77 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.rowField {
+  flex: 1;
+  min-width: 0;
+}
+
+.input {
+  composes: formInput from global;
+}
+
+.toggleField {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggleLabel {
+  composes: label from '../common/Field.module.css';
+}
+
+.toggle {
+  width: 40px;
+  height: 24px;
+  border: none;
+  border-radius: 999px;
+  background: #e3dfe9;
+  padding: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.toggleOn {
+  background: var(--accent);
+}
+
+.toggleThumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.toggleOn .toggleThumb {
+  transform: translateX(16px);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.cancelButton {
+  composes: modalCancelButton from global;
+}
+
+.deleteButton {
+  composes: modalDeleteButton from global;
+}
+
+.saveButton {
+  composes: modalSaveButton from global;
+}

@@ -1,0 +1,44 @@
+.previewWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.55 / 1;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.rowField {
+  flex: 1;
+  min-width: 0;
+}
+
+.input {
+  composes: formInput from global;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.cancelButton {
+  composes: modalCancelButton from global;
+}
+
+.deleteButton {
+  composes: modalDeleteButton from global;
+}
+
+.saveButton {
+  composes: modalSaveButton from global;
+}

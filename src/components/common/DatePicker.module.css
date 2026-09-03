@@ -1,0 +1,130 @@
+.wrap {
+  composes: dropdownWrap from global;
+}
+
+.trigger {
+  composes: fieldTrigger from global;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.calendarIcon {
+  width: 16px;
+  height: 16px;
+  color: #9b95a5;
+  flex-shrink: 0;
+}
+
+.triggerLabel {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.panel {
+  composes: dropdownPanel from global;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 10;
+  width: 264px;
+  padding: 14px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.panelTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f1a2b;
+}
+
+.navButton {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  color: #5b5566;
+  cursor: pointer;
+}
+
+.navButton:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.navButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 4px;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #b3aebc;
+  padding: 4px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1f1a2b;
+  cursor: pointer;
+}
+
+.day:hover {
+  background: var(--accent-soft);
+}
+
+.dayMuted {
+  color: #d8d3e0;
+}
+
+.dayToday {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.daySelected {
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.daySelected:hover {
+  background: var(--accent);
+}

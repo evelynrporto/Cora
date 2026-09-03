@@ -1,0 +1,55 @@
+.widget {
+  composes: widgetCard from global;
+  width: 500px;
+  background: linear-gradient(
+    180deg,
+    var(--surface-tint-start) 0%,
+    var(--surface-tint-end) 100%
+  );
+}
+
+.header {
+  composes: headerRow from global;
+  margin-bottom: 16px;
+}
+
+.title {
+  composes: widgetTitle from global;
+}
+
+.headerActions {
+  composes: widgetHeaderActions from global;
+}
+
+.addButton {
+  composes: widgetAddButton from global;
+}
+
+.seeAll {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.chevron {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.empty {
+  composes: emptyState from global;
+  background: #ffffff;
+}

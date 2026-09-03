@@ -1,0 +1,58 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 4px 0 22px;
+}
+
+.iconWrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffe3e3;
+  color: #e5484d;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.message {
+  margin: 0;
+  font-size: 14px;
+  color: #5b5566;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.cancelButton {
+  composes: modalCancelButton from global;
+}
+
+.confirmButton {
+  flex: 1;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #e5484d;
+  border: none;
+  border-radius: 999px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.confirmButton:hover {
+  background: #c9302c;
+}

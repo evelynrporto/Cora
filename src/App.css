@@ -1,0 +1,60 @@
+.page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.appHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 20px 0;
+}
+
+.brandLogo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.brandName {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f1a2b;
+  letter-spacing: -0.3px;
+}
+
+.topRow {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+}
+
+.loadingMessage {
+  font-size: 15px;
+  color: #9b95a5;
+  align-self: center;
+}
+
+.errorMessage {
+  max-width: 420px;
+  font-size: 15px;
+  color: #1f1a2b;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  align-self: center;
+  text-align: center;
+  box-shadow: 0 8px 24px -8px rgba(31, 26, 43, 0.15);
+}

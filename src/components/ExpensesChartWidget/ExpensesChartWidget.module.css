@@ -1,0 +1,127 @@
+.widget {
+  composes: widgetCard from global;
+  width: 500px;
+  background: linear-gradient(
+    180deg,
+    var(--surface-tint-start) 0%,
+    var(--surface-tint-end) 100%
+  );
+}
+
+.header {
+  composes: headerRow from global;
+  margin-bottom: 16px;
+}
+
+.empty {
+  composes: emptyState from global;
+  background: #ffffff;
+}
+
+.title {
+  composes: widgetTitle from global;
+}
+
+.chartArea {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4px;
+  margin-top: 64px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(31, 26, 43, 0.08);
+  background-image: repeating-linear-gradient(
+    to top,
+    rgba(31, 26, 43, 0.06) 0,
+    rgba(31, 26, 43, 0.06) 1px,
+    transparent 1px,
+    transparent 25%
+  );
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.barWrap {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.column:has(.callout) .barWrap {
+  z-index: 1;
+}
+
+.bar {
+  width: 32px;
+  max-width: 75%;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  background: var(--accent-bar-idle);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.column:hover .bar,
+.bar:focus-visible {
+  background: var(--accent-bar-hover);
+  outline: none;
+}
+
+.barSelected {
+  background: var(--accent);
+}
+
+.column:hover .barSelected,
+.barSelected:focus-visible {
+  background: var(--accent);
+  opacity: 0.9;
+}
+
+.callout {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 8px 14px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px -6px rgba(var(--accent-rgb), 0.5);
+  pointer-events: none;
+}
+
+.callout::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--accent);
+}
+
+.monthLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: #9b95a5;
+}
+
+.monthLabelSelected {
+  font-weight: 700;
+  color: #1f1a2b;
+}

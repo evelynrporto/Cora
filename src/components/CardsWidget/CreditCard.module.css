@@ -1,0 +1,171 @@
+.card {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 16px 22px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow:
+    0 12px 24px -8px rgba(0, 0, 0, 0.25),
+    0 4px 8px -2px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease;
+  user-select: none;
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  pointer-events: none;
+}
+
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.bankInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bankName {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+}
+
+.cardType {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  opacity: 0.85;
+}
+
+.network {
+  position: relative;
+  width: 34px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.networkCircleYellow,
+.networkCircleRed {
+  position: absolute;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+
+.networkCircleRed {
+  left: 0;
+  background: #eb4e4e;
+  opacity: 0.9;
+}
+
+.networkCircleYellow {
+  left: 12px;
+  background: #ffd36a;
+  mix-blend-mode: multiply;
+}
+
+.chipRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+}
+
+.chip {
+  width: 32px;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.digitsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0px 0 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.numberGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.digits {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  opacity: 0.5;
+}
+
+.lastDigits {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.contactless {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  color: rgba(255, 255, 255, 0.85);
+  transform: rotate(0deg);
+  flex-shrink: 0;
+}
+
+.bottomRow {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.limitLabel {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  opacity: 0.8;
+}
+
+.limitValue {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}

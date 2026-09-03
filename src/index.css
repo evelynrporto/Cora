@@ -1,0 +1,312 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --code-bg: #f4f3ec;
+
+  --sans: 'Plus Jakarta Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: 'Plus Jakarta Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  /* App color palette (brand accent) — switchable via the theme picker,
+     which sets data-theme on <html>. */
+  --accent: #f4519e;
+  --accent-hover: #e63f8c;
+  --accent-soft: #ffe5f2;
+  --accent-muted: #f3c9dd;
+  --accent-rgb: 244, 81, 158;
+  --surface-tint-start: #fff2fa;
+  --surface-tint-end: #f3efff;
+  --accent-bar-idle: #ffd6ea;
+  --accent-bar-hover: #ffbedb;
+  --accent-row-hover: #fff7fb;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --code-bg: #1f2028;
+  }
+}
+
+:root[data-theme='teal'] {
+  --accent: #2bb3ae;
+  --accent-hover: #1f9490;
+  --accent-soft: #dff6f3;
+  --accent-muted: #b9e8e3;
+  --accent-rgb: 43, 179, 174;
+  --surface-tint-start: #eafcfa;
+  --surface-tint-end: #eaf5fb;
+  --accent-bar-idle: #cdeeeb;
+  --accent-bar-hover: #b8e6e1;
+  --accent-row-hover: #eefbfa;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--accent-soft);
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+/* Shared, composable primitives for widget/dropdown chrome — see components'
+   *.module.css files for `composes: ... from global`. */
+
+.widgetCard {
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow:
+    0 20px 40px -16px rgba(139, 111, 247, 0.18),
+    0 2px 6px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+}
+
+.dropdownPanel {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow:
+    0 16px 32px -12px rgba(31, 26, 43, 0.2),
+    0 4px 10px rgba(31, 26, 43, 0.06);
+}
+
+.thinScrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-muted) transparent;
+}
+
+.thinScrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.thinScrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.thinScrollbar::-webkit-scrollbar-thumb {
+  background: var(--accent-muted);
+  border-radius: 999px;
+}
+
+.thinScrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+.dropdownWrap {
+  position: relative;
+}
+
+.fieldTrigger {
+  width: 100%;
+  background: #f7f6fa;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f1a2b;
+  transition: border-color 0.15s ease;
+}
+
+.fieldTrigger:hover {
+  border-color: #ece7f2;
+}
+
+.fieldTrigger:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  background: #ffffff;
+}
+
+.dropdownChevron {
+  width: 16px;
+  height: 16px;
+  color: #9b95a5;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.dropdownChevronOpen {
+  transform: rotate(180deg);
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.widgetTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f1a2b;
+  letter-spacing: -0.2px;
+}
+
+.emptyState {
+  margin: 0;
+  padding: 32px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: #9b95a5;
+  border-radius: 18px;
+}
+
+.formInput {
+  font: inherit;
+  font-size: 14px;
+  color: #1f1a2b;
+  background: #f7f6fa;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.formInput:focus {
+  border-color: var(--accent);
+  background: #ffffff;
+}
+
+.modalCancelButton {
+  flex: 1;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #5b5566;
+  background: #f5f3f8;
+  border: none;
+  border-radius: 999px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.modalCancelButton:hover {
+  background: #ece9f1;
+}
+
+.modalSaveButton {
+  flex: 1;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--accent);
+  border: none;
+  border-radius: 999px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.modalSaveButton:hover {
+  background: var(--accent-hover);
+}
+
+.modalDeleteButton {
+  flex: 1;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e5484d;
+  background: #ffe3e3;
+  border: none;
+  border-radius: 999px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.modalDeleteButton:hover {
+  background: #ffcdd2;
+}
+
+.widgetHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.widgetAddButton {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.widgetAddButton:hover {
+  background: var(--accent-hover);
+}
