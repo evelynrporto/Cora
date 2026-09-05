@@ -1,13 +1,28 @@
 .page {
   flex: 1;
   display: flex;
-  justify-content: center;
-  padding: 40px 20px;
+  align-items: stretch;
+  min-height: 0;
 }
 
-.container {
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 20px 16px calc(100px + env(safe-area-inset-bottom));
+  }
+}
+
+.contentInner {
   width: 100%;
   max-width: 1600px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -19,26 +34,35 @@
   gap: 10px;
   width: 100%;
   box-sizing: border-box;
-  padding: 20px 20px 0;
 }
 
-.brandLogo {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-}
-
-.brandName {
+.pageTitle {
+  margin: 0;
   font-size: 22px;
   font-weight: 700;
   color: #1f1a2b;
   letter-spacing: -0.3px;
 }
 
+.comingSoon {
+  background: #ffffff;
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  color: #9b95a5;
+  padding: 48px 16px;
+}
+
 .topRow {
   display: flex;
   align-items: stretch;
   gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .topRow {
+    flex-direction: column;
+  }
 }
 
 .loadingMessage {

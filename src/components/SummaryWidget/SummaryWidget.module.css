@@ -146,3 +146,21 @@
   white-space: nowrap;
   text-align: right;
 }
+
+@media (max-width: 768px) {
+  .widget {
+    flex-direction: column;
+  }
+
+  .totalColumn {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .divider {
+    width: auto;
+    height: 1px;
+    align-self: stretch;
+    margin: 20px 0;
+  }
+}

@@ -1,0 +1,130 @@
+.sidebar {
+  width: 256px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: linear-gradient(
+    180deg,
+    var(--surface-tint-start) 0%,
+    var(--surface-tint-end) 100%
+  );
+  box-sizing: border-box;
+  padding: 32px 20px;
+  box-shadow: 12px 0 32px -24px rgba(139, 111, 247, 0.4);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(31, 26, 43, 0.08);
+  flex-shrink: 0;
+}
+
+.brandLogo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.brandName {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.3px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: #9b95a5;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.navItem:hover {
+  background: var(--accent-row-hover);
+  color: #5b5566;
+}
+
+.navItemActive,
+.navItemActive:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.navIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -8px 24px -12px rgba(139, 111, 247, 0.35);
+    z-index: 50;
+  }
+
+  .brand,
+  .divider {
+    display: none;
+  }
+
+  .nav {
+    flex-direction: row;
+    width: 100%;
+    gap: 2px;
+  }
+
+  .navItem {
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 4px;
+    border-radius: 14px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .navItem span {
+    display: none;
+  }
+
+  .navItemActive span {
+    display: block;
+  }
+}

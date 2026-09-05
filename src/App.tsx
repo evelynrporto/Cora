@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import logo from './assets/logo.png'
+import { FiCreditCard, FiHome, FiPieChart, FiRepeat, FiSettings, FiTarget } from 'react-icons/fi'
 import { CardsWidget } from './components/CardsWidget'
 import type { CardData } from './components/CardsWidget'
 import { ThemeSwitcher } from './components/common/ThemeSwitcher'
 import { ExpensesChartWidget } from './components/ExpensesChartWidget'
 import type { MonthlyExpense } from './components/ExpensesChartWidget'
+import { Sidebar } from './components/Sidebar'
+import type { SidebarItem } from './components/Sidebar'
 import { SummaryWidget } from './components/SummaryWidget'
 import type { CategorySpending } from './components/SummaryWidget'
 import { TransactionsWidget } from './components/TransactionsWidget'
@@ -33,10 +35,21 @@ interface AppData {
   categories: CategorySpending[]
 }
 
+const navItems: SidebarItem[] = [
+  { id: 'resumo', label: 'Resumo', icon: FiHome },
+  { id: 'transacoes', label: 'Transações', icon: FiRepeat },
+  { id: 'cartoes', label: 'Cartões', icon: FiCreditCard },
+  { id: 'metas', label: 'Metas', icon: FiTarget },
+  { id: 'relatorios', label: 'Relatórios', icon: FiPieChart },
+  { id: 'configuracoes', label: 'Configurações', icon: FiSettings },
+]
+
 function App() {
   const [data, setData] = useState<AppData | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [activeSection, setActiveSection] = useState(navItems[0].id)
   const { theme, setTheme } = useTheme()
+  const activeItem = navItems.find((item) => item.id === activeSection)!
 
   useEffect(() => {
     Promise.all([
@@ -152,51 +165,54 @@ function App() {
     )
   }
 
-  return (
-    <>
-      <header className="appHeader">
-        <img src={logo} alt="" className="brandLogo" />
-        <span className="brandName">Cora</span>
-        <ThemeSwitcher value={theme} onChange={setTheme} />
-      </header>
+  function renderContent() {
+    if (error) return <p className="errorMessage">{error}</p>
+    if (!data) return <p className="loadingMessage">Carregando...</p>
+    if (activeSection !== 'resumo') return <p className="comingSoon widgetCard">Em breve.</p>
 
-      {error ? (
-        <div className="page">
-          <p className="errorMessage">{error}</p>
+    return (
+      <>
+        <div className="topRow">
+          <SummaryWidget
+            total={data.total}
+            changePercent={data.changePercent}
+            categories={data.categories}
+          />
+          <CardsWidget
+            cards={data.cards}
+            onCreateCard={handleCreateCard}
+            onUpdateCard={handleUpdateCard}
+            onDeleteCard={handleDeleteCard}
+          />
         </div>
-      ) : !data ? (
-        <div className="page">
-          <p className="loadingMessage">Carregando...</p>
+        <div className="topRow">
+          <TransactionsWidget
+            transactions={data.transactions}
+            onCreateTransaction={handleCreateTransaction}
+            onUpdateTransaction={handleUpdateTransaction}
+            onDeleteTransaction={handleDeleteTransaction}
+          />
+          <ExpensesChartWidget data={data.monthlyExpenses} />
         </div>
-      ) : (
-        <div className="page">
-          <div className="container">
-            <div className="topRow">
-              <SummaryWidget
-                total={data.total}
-                changePercent={data.changePercent}
-                categories={data.categories}
-              />
-              <CardsWidget
-                cards={data.cards}
-                onCreateCard={handleCreateCard}
-                onUpdateCard={handleUpdateCard}
-                onDeleteCard={handleDeleteCard}
-              />
-            </div>
-            <div className="topRow">
-              <TransactionsWidget
-                transactions={data.transactions}
-                onCreateTransaction={handleCreateTransaction}
-                onUpdateTransaction={handleUpdateTransaction}
-                onDeleteTransaction={handleDeleteTransaction}
-              />
-              <ExpensesChartWidget data={data.monthlyExpenses} />
-            </div>
-          </div>
+      </>
+    )
+  }
+
+  return (
+    <div className="page">
+      <Sidebar items={navItems} activeId={activeSection} onSelect={setActiveSection} />
+
+      <div className="content">
+        <div className="contentInner">
+          <header className="appHeader">
+            <h1 className="pageTitle">{activeItem.label}</h1>
+            <ThemeSwitcher value={theme} onChange={setTheme} />
+          </header>
+
+          {renderContent()}
         </div>
-      )}
-    </>
+      </div>
+    </div>
   )
 }
 

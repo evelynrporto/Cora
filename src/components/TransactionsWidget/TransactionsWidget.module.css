@@ -1,5 +1,5 @@
 .widget {
-  composes: widgetCard from global;
+  composes: widgetCard mobileFullWidth from global;
   width: 500px;
   background: linear-gradient(
     180deg,
